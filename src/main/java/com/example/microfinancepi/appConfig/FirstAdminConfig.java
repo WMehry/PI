@@ -1,8 +1,5 @@
 package com.example.microfinancepi.appConfig;
 
-import com.example.microfinancepi.entities.User;
-import com.example.microfinancepi.entities.User_role;
-import com.example.microfinancepi.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

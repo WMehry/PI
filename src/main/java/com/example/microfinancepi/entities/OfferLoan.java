@@ -1,5 +1,6 @@
 package com.example.microfinancepi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,31 +20,34 @@ import java.util.Set;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OfferLoan implements Serializable {
-    static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long idOffer;
+    String status ="AVAILABLE";// AVAILABLE or UNAVAILABLE
 
-    String status ="AVAILABLE";// the offer is availabe or not
     @Enumerated(EnumType.STRING)
     LoanType typeLoan;
+
     @NotBlank
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     Date offrDate;
-    Float tmm;
     @NotBlank(message = "the amount should be in decimal value")
-    Long maxAmnt;// should be in %
+    Long maxAmnt;
     @NotBlank(message = "the amount should be in decimal value and better than 0")
     Long minAmnt;
-    @Min(value = 3, message = "the repayment periode should not be lower than 3 month")
+    @Min(value = 2, message = "the repayment periode should not be lower than 3 month")
     Long minRepaymentPer;
-    @NotBlank(message = "the interest rate should be grater than the TMM ")
-    @Min(value = 0, message = "The interest rate should not be negative")
+    Double tmm;
+    @NotBlank(message = "the interest rate should be grater than the tmm ")
+    @Min(value = 1, message = "The interest rate should not be negative")
     Float intRate;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    Set<RequestLoan> requestloans;
+//association:
+    @JsonIgnore
+    @OneToMany(mappedBy = "offerLoan", cascade = CascadeType.ALL)
+    Set<RequestLoan> requestLoans;
+
     @ManyToOne
     User user;
 

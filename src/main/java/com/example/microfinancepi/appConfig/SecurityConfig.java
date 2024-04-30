@@ -3,7 +3,6 @@ package com.example.microfinancepi.appConfig;
 import com.example.microfinancepi.security.JWTAuthenticationFilter;
 import com.example.microfinancepi.security.JWTAuthorizationFilter;
 import com.example.microfinancepi.security.JWTUtils;
-import com.example.microfinancepi.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +16,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 
 @Configuration

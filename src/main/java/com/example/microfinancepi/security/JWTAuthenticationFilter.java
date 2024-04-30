@@ -1,7 +1,5 @@
 package com.example.microfinancepi.security;
 
-import com.example.microfinancepi.entities.LoginRequest;
-import com.example.microfinancepi.entities.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

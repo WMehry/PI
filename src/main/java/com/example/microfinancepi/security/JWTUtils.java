@@ -1,7 +1,5 @@
 package com.example.microfinancepi.security;
 
-import com.example.microfinancepi.entities.BlacklistedToken;
-import com.example.microfinancepi.repositories.BlacklistedTokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

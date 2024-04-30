@@ -11,11 +11,12 @@ import java.util.List;
 @Repository
 public interface OfferLoanRepository extends JpaRepository<OfferLoan,Long> {
 
-    List<OfferLoan> findOffersByMinAmntLessThanEqual(Long searchedAmount);// search the
-    int countByStatus(String status); //count the number of offers dispo
-
-    @Query("SELECT COUNT(r) FROM OfferLoan o JOIN o.requestloans r WHERE o.idOffer = :offerId")
+    List<OfferLoan> findOffersByMinAmntLessThanEqual(Long searchedAmount);// search
+    @Query("SELECT COUNT(o) FROM OfferLoan o WHERE o.status = :status")
+    int countByStatus(@Param("status") String status);
+    @Query("SELECT COUNT(r) FROM OfferLoan o JOIN o.requestLoans r WHERE o.idOffer = :offerId")
     int countRequestLoansByOfferId(@Param("offerId") Long offerId);
+
 
 
 

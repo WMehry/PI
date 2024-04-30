@@ -1,32 +1,27 @@
 package com.example.microfinancepi.entities;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Amortization {
+public class AmortizationDetail {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long idAmt;
-    @NotBlank
+    Long idDetail;
+    Long idAmort;//this id is of the table Amortization
+    Long periode;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     Date date;
-    Long periode;
     Long startAmount;
     Long intrest;
     Long amrt;
@@ -34,11 +29,7 @@ public class Amortization {
     Long frais;
     Long agio;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "amortization")
-    RequestLoan requestloan;
-
-    @OneToMany(mappedBy = "amortization" ,cascade = CascadeType.ALL)
-    Set<AmortizationDetail> detailAmorts;
+    @ManyToOne
+    Amortization amortization;
 
 }
