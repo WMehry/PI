@@ -19,7 +19,6 @@ import java.util.List;
 public class AmortizationRestcontroller {
 
     IAmortizationService amortizationService;
-    //turytr
 
     //Afficher
     @GetMapping("/retrieve_all_amortization")
